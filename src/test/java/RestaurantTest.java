@@ -31,17 +31,29 @@ class RestaurantTest {
     @Test
     public void is_restaurant_open_should_return_false_if_time_is_outside_opening_and_closing_time(){
         //WRITE UNIT TEST CASE HERE
-
-
         initialize();
-
-
         Restaurant spiedRestaurant = Mockito.spy(restaurant);
         Mockito.when(spiedRestaurant.getCurrentTime()).thenReturn(LocalTime.parse("23:30:25"));
         System.out.println(spiedRestaurant.getName());
         assertEquals(false,spiedRestaurant.isRestaurantOpen());
 
     }
+
+    @Test
+    public void getting_the_not_equal_order_value_after_selecting_items(){
+        initialize();
+        restaurant.addToMenu("Vegetable lasagne1",200);
+        restaurant.addToMenu("Vegetable lasagne2",300);
+
+        List<String> list= new ArrayList<>();
+        list.add("simple");
+        list.add("simple1");
+        list.add("simple2");
+
+        assertEquals(500,restaurant.getOrderValue(list));
+
+    }
+
 
 
     @Test
