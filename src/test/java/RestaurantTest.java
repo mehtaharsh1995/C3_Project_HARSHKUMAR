@@ -57,6 +57,22 @@ class RestaurantTest {
 
 
     @Test
+    public void getting_the_equal_order_value_after_selecting_items(){
+        initialize();
+        restaurant.addToMenu("Vegetable lasagne1",300);
+        restaurant.addToMenu("Vegetable lasagne2",400);
+
+        List<String> list= new ArrayList<>();
+        list.add("Vegetable lasagne");
+        list.add("Vegetable lasagne1");
+        list.add("Sweet corn soup");
+        list.add("Vegetable lasagne2");
+
+        assertEquals(1000,restaurant.getOrderValue(list));
+
+    }
+
+    @Test
     public void is_local_time(){
         System.out.println(LocalTime.now());
     }
